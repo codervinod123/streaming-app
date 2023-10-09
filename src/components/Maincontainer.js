@@ -6,7 +6,7 @@ import VedioContainer from './VedioContainer';
 const Maincontainer = () => {
  
   return (
-    <div>
+    <div className='bg-zinc-900'>
       <ButtonList/>
       <VedioContainer/>
     </div>

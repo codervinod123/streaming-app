@@ -5,10 +5,26 @@ import Body from './components/Body'
 import {Provider} from "react-redux"
 import store from './utils/store'
 import {createBrowserRouter} from "react-router-dom"
-import VedioPlayer from './components/VedioPlayer'
 import {RouterProvider} from "react-router-dom"
 import Maincontainer from './components/Maincontainer'
+import Watchpage from './components/Watchpage'
 
+
+
+const appRouter=createBrowserRouter([{
+  path:"/",
+  element:<Body/>,
+  children:[
+    {
+      path:"/",
+      element:<Maincontainer/>
+    },
+    {
+      path:"/watch",
+      element:<Watchpage/>
+    }
+  ]
+}])
 
 
 const App = () => {
@@ -16,7 +32,7 @@ const App = () => {
     <Provider store={store}>
      <div className='global'>
         <Header/>
-        <Body/>
+        <RouterProvider router={appRouter}/>
      </div>
     </Provider>
   )
