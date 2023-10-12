@@ -8,32 +8,31 @@ import {IoMdNotificationsOutline} from "react-icons/io"
 import {RiVideoAddLine} from "react-icons/ri"
 import {useDispatch} from "react-redux"
 import { toggleSIdebarMenu } from '../utils/sidebarSlice';
-import { searchCache } from '../utils/searchSlice';
 import {useSelector} from "react-redux"
+import { searchCache } from '../utils/searchSlice';
 
 const Header = () => {
 
+   
     const dispatch=useDispatch();
-
-
-
- 
-
-  
-
-    const handleToggleClick=()=>{
-      dispatch(toggleSIdebarMenu());
-    }
-
     const [searchText,setSearchText]=useState("");
     const [suggestions,setSuggestions]=useState([]);
     const [showSuggestions,setShowSuggestions]=useState(false);
 
-    console.log(searchText);
+    const storedCache=useSelector((store)=>store.searchSlice);
 
     useEffect(()=>{
-     const time=setTimeout(()=>getSearchResult(),300);
-      return ()=>{
+
+     const time=setTimeout(()=> {
+      if(storedCache[searchText]){
+         setSuggestions(storedCache[searchText]);
+      }else{
+         getSearchResult()
+      }
+
+     },300);
+
+     return ()=>{
          clearTimeout(time);
       };
 
@@ -43,7 +42,17 @@ const Header = () => {
         const data=await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchText}`);
         const json=await data.json();
         setSuggestions(json[1]);
+        dispatch(searchCache({
+           [searchText]:json[1]
+        }));
     }
+
+
+   
+  
+    const handleToggleClick=()=>{
+       dispatch(toggleSIdebarMenu());
+     }
    
   return (
     <div className='flex justify-between items-center px-4 py-2 shadow-lg h-[3.8rem] transition-all duration-500 w-full top-0 z-10 bg-zinc-900 sticky'>
@@ -87,9 +96,9 @@ const Header = () => {
                   {
                      suggestions.map((data)=>{
                         return(
-                           <>
-                               <li key={data} className='px-4 py-2 hover:bg-zinc-600 rounded flex items-center gap-3 text-white'> <TfiSearch size="1rem"/>{data}</li>
-                           </>
+                          
+                            <li key={data} className='px-4 py-2 hover:bg-zinc-600 rounded flex items-center gap-3 text-white'> <TfiSearch size="1rem"/>{data}</li>
+                          
                         )
                      })
                   }

@@ -1,30 +1,101 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { closeSidebar } from '../utils/sidebarSlice';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import {BiLike,BiDislike} from "react-icons/bi";
+import {PiShareFatLight}  from "react-icons/pi";
+import CommentContainer from './CommentContainer';
+import {channelDetailURL,API_KEY} from "../config/constant"
+
 
 const Watchpage = () => {
 
-
-     const [queriedId]=useSearchParams();
-      
- 
     const dispatch=useDispatch();
+    const [queriedId]=useSearchParams();
+    const vedID=queriedId.get("v");
+    const {channelId}=useParams()
+    const [vedDetails,setVedDetails]=useState(null);
+   
+    
+   
+
+   
     useEffect(()=>{
-      dispatch(closeSidebar());
+       dispatch(closeSidebar());
     },[])
 
-  return (
-    <div className='mx-[4rem] my-4 rounded-sm'>
+    useEffect(()=>{
+      getVedioChannelDetails();
+    },[])
+
+    const getVedioChannelDetails=async()=>{
+        const data=await fetch(channelDetailURL+channelId+"&key="+API_KEY);
+        const json=await data.json();
+        setVedDetails(json.items[0]);
+
+    }
+
+   
+    
+
+  
+
+
+
+  return !vedDetails? <h1>Hello</h1>: (
+    <div className='bg-zinc-900 w-full flex'>
+    <div  className='mx-[4rem]  my-4 px-8 rounded-sm flex flex-col '>
            <iframe 
-              width="680" 
-              height="370" 
-              src={"https://www.youtube.com/embed/"+queriedId.get("v")}
+              width="640" 
+              height="360" 
+              src={"https://www.youtube.com/embed/"+queriedId.get("v")+"?autoplay=1"}
               title="YouTube video player" 
-              frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowfullscreen>
+             >
           </iframe>
+
+          <div className='w-[40rem]'>
+              <p className='font-semibold text-white text-xl py-2'>{vedDetails.snippet.description.slice(0,125)}...</p>
+          </div>
+
+          <div className='flex w-[40rem] items-center'>
+             <div className='mx-2 h-[3rem] w-[3rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
+             <div>
+                <p className='text-white font-bold'>{vedDetails.snippet.title}</p>
+                <p className='text-gray-400'>{vedDetails.statistics.subscriberCount/1000000}M subscribers</p>
+             </div>
+             <div className='mx-8'>
+                <button className='bg-gray-200 px-4 py-[.4rem] rounded-full font-semibold'>Subscribe</button>
+             </div>
+             <div>
+             <div className='bg-zinc-700 cursor-pointer text-white px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
+                   <BiLike 
+                     size={"1.5rem"}
+                    //  className='border-r'
+                   />
+                   |
+                   <BiDislike
+                     size={"1.5rem"}
+                   />
+             </div>
+             </div>
+        
+             <div className='mx-4'> 
+              <div className='bg-zinc-700 cursor-pointer text-white px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
+                   <PiShareFatLight  size={"1.5rem"}/>
+              </div>
+             </div>
+           
+             <div className='bg-zinc-700 rounded-full h-[2.4rem] w-[2.4rem] hover:bg-zinc-400 font-bold flex text-white justify-center'>...</div>
+          </div>
+
+          <div className='py-2 text-white'>
+              <CommentContainer vedioId={vedID}/>
+          </div>
+
+
+    </div>
+
     </div>
   )
 }

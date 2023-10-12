@@ -6,7 +6,7 @@ const Shimmer=()=>{
      const shimmerarray=Array.from({length:36});
     
 return(
-    <div className='flex flex-wrap gap-8 m-4 justify-center bg-slate-900'>
+    <div className='flex flex-wrap gap-8 m-4 justify-center bg-zinc-900'>
      {
         shimmerarray.map((data,index)=>{
             return(

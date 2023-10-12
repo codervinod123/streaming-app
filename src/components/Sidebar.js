@@ -27,12 +27,13 @@ import { SiYoutubemusic } from "react-icons/si";
 import { TbMoodKid } from "react-icons/tb";
 import { ImDisplay } from "react-icons/im";
 import {useSelector} from "react-redux"
+import sidebarSlice from "../utils/sidebarSlice";
 
 
 const Sidebar = () => {
 
-    const isSidebarOpen=useSelector((store)=>store.isMenuOpen);
-    
+    const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
+   
     if(!isSidebarOpen) return null;
    
   return (
