@@ -6,6 +6,7 @@ import {BiLike,BiDislike} from "react-icons/bi";
 import {PiShareFatLight}  from "react-icons/pi";
 import CommentContainer from './CommentContainer';
 import {channelDetailURL,API_KEY} from "../config/constant"
+import Voice from './Voice';
 
 
 const Watchpage = () => {
@@ -54,6 +55,8 @@ const Watchpage = () => {
              >
           </iframe>
 
+          
+
           <div className='w-[40rem]'>
               <p className='font-semibold text-white text-xl py-2'>{vedDetails.snippet.description.slice(0,125)}...</p>
           </div>
@@ -92,6 +95,7 @@ const Watchpage = () => {
           <div className='py-2 text-white'>
               <CommentContainer vedioId={vedID}/>
           </div>
+
 
 
     </div>

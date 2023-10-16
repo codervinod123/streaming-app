@@ -17,7 +17,7 @@ const Vediocard = ({info}) => {
         <div>
            <p className='font-semibold'>{info.snippet.localized.title.slice(0,36)}...</p>
            <p className='text-gray-300'>{info.snippet.channelTitle}</p>
-           <p className='text-gray-300'>{info.statistics.viewCount/1000}K Views</p>
+           <p className='text-gray-300'>{info.statistics.viewCount/1000000} M Views</p>
         </div>
        </div>
        

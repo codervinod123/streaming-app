@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux"
 import { toggleSIdebarMenu } from '../utils/sidebarSlice';
 import {useSelector} from "react-redux"
 import { searchCache } from '../utils/searchSlice';
+import MikeListening from "../assests/mic_open.gif";
 
 const Header = () => {
 
@@ -18,6 +19,8 @@ const Header = () => {
     const [searchText,setSearchText]=useState("");
     const [suggestions,setSuggestions]=useState([]);
     const [showSuggestions,setShowSuggestions]=useState(false);
+
+  
 
     const storedCache=useSelector((store)=>store.searchSlice);
 
@@ -45,14 +48,50 @@ const Header = () => {
         dispatch(searchCache({
            [searchText]:json[1]
         }));
+     }
+
+   
+
+   const handleToggleClick=()=>{
+       dispatch(toggleSIdebarMenu());
     }
 
 
-   
-  
-    const handleToggleClick=()=>{
-       dispatch(toggleSIdebarMenu());
-     }
+    //voice search functionality
+
+    const [listening, setListening] = useState(false);
+    const [text, setText] = useState('');
+
+    const handleMikeVoice=()=>{
+      setListening(!listening)
+    }
+
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = 'en-US';
+
+  recognition.onstart = () => {
+    setListening(true);
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    setText(transcript);
+  };
+
+  recognition.onend = () => {
+    setListening(false);
+  };
+
+  const handleListen = () => {
+    if (listening) {
+      recognition.stop();
+    } else {
+      recognition.start();
+    }
+  };
+
+
+
    
   return (
     <div className='flex justify-between items-center px-4 py-2 shadow-lg h-[3.8rem] transition-all duration-500 w-full top-0 z-10 bg-zinc-900 sticky'>
@@ -117,13 +156,18 @@ const Header = () => {
                  />
               </div>
 
-              <div className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full text-white'>
-                <MdKeyboardVoice
+              <div onClick={()=>handleMikeVoice()} className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full text-white'>
+                {listening?
+                <img className='w-[1.85rem]' src={MikeListening} alt="" />
+                :<MdKeyboardVoice
                   size="1.5rem" 
                   className=''
                   title='Search With Your Voice'
+                  onClick={handleListen}
                 />
+               }
               </div> 
+             
 
           </div>
 
@@ -153,7 +197,7 @@ const Header = () => {
              
              
              
-             
+            
           </div>
     </div>
   )
