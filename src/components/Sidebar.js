@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {
   MdHomeFilled,
   MdOutlineSubscriptions,
@@ -27,17 +27,24 @@ import { SiYoutubemusic } from "react-icons/si";
 import { TbMoodKid } from "react-icons/tb";
 import { ImDisplay } from "react-icons/im";
 import {useSelector} from "react-redux"
-import sidebarSlice from "../utils/sidebarSlice";
 
 
 const Sidebar = () => {
 
+   const [theme,setTheme]=useState(false);
+ 
     const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
+    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
+  
+    useEffect(()=>{
+      setTheme(themeMode);
+    },[themeMode])
    
+
     if(!isSidebarOpen) return null;
    
   return (
-    <div className="sidebar w-[15rem] flex flex-col  min-w-fit transition-all duration-200 bg-zinc-900 text-white overflow-y-scroll">
+    <div className={` sidebar w-[15rem] flex flex-col  min-w-fit overflow-y-scroll transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex w-[15rem] flex-col pl-2 pr-6 text-sm ">
             
             <a href="/">
