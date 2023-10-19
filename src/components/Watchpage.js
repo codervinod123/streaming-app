@@ -7,6 +7,7 @@ import {PiShareFatLight}  from "react-icons/pi";
 import CommentContainer from './CommentContainer';
 import {channelDetailURL,API_KEY} from "../config/constant"
 import Voice from './Voice';
+import SuggestionPages from './SuggestionPages';
 
 
 const Watchpage = () => {
@@ -96,7 +97,7 @@ const Watchpage = () => {
               <CommentContainer vedioId={vedID}/>
           </div>
 
-
+          <SuggestionPages/>
 
     </div>
 
