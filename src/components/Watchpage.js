@@ -97,7 +97,6 @@ const Watchpage = () => {
               <CommentContainer vedioId={vedID}/>
           </div>
 
-          <SuggestionPages/>
 
     </div>
 
