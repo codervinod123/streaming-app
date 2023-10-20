@@ -9,6 +9,7 @@ import {channelDetailURL,API_KEY} from "../config/constant"
 import Voice from './Voice';
 
 import { useSelector } from 'react-redux';
+import WatchPageShimmer from './WatchPageShimmer';
 
 
 const Watchpage = () => {
@@ -54,7 +55,7 @@ const Watchpage = () => {
 
 
 
-  return !vedDetails? <h1>Hello</h1>: (
+  return !vedDetails ? <WatchPageShimmer/> : (
     <div className={`w-full flex transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
     <div  className='mx-[4rem]  my-4 px-8 rounded-sm flex flex-col '>
            <iframe 

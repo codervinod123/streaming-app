@@ -27,6 +27,7 @@ import { SiYoutubemusic } from "react-icons/si";
 import { TbMoodKid } from "react-icons/tb";
 import { ImDisplay } from "react-icons/im";
 import {useSelector} from "react-redux"
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -47,7 +48,7 @@ const Sidebar = () => {
     <div className={` sidebar w-[15rem] flex flex-col  min-w-fit overflow-y-scroll transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex w-[15rem] flex-col pl-2 pr-6 text-sm ">
             
-            <a href="/">
+            <Link to="/">
               <div className="flex items-center px-4 py-2 mt-4 hover:bg-zinc-700 rounded-lg cursor-pointer">
                 <MdHomeFilled 
                   size="1.5rem"
@@ -55,7 +56,7 @@ const Sidebar = () => {
                 />
                 <span>Home</span>
               </div>
-            </a>
+            </Link>
                 
              {/* <div className="flex items-center px-4 py-2 hover:bg-zinc-700 rounded-lg cursor-pointer">
                  <img 

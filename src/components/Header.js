@@ -128,10 +128,10 @@ const Header = () => {
              <div className='cursor-pointer flex items-center transition-all duration-500'>
                 <a href="/">
                   <img 
-                  src={theme? logo_light : logo_dark } 
-                  alt="Youtube Home"
-                  className='pl-4 w-32 transition-all duration-500'
-                  title='logo'  
+                      src={theme? logo_light : logo_dark } 
+                      alt="Youtube Home"
+                      className='pl-4 w-32 transition-all duration-500'
+                      title='logo'  
                   />
                 </a>
              </div>
