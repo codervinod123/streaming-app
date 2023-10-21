@@ -40,6 +40,8 @@ const Watchpage = () => {
 
     }
 
+    
+
 
   
   const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
@@ -74,7 +76,7 @@ const Watchpage = () => {
           </div>
 
           <div className='flex w-[40rem] items-center'>
-             <div className='mx-2 h-[3rem] w-[3rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
+             <div className='mx-2 h-[2.6rem] w-[2.6rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
              <div>
                 <p className='font-bold'>{vedDetails.snippet.title}</p>
                 <p className='text-gray-400'>{vedDetails.statistics.subscriberCount/1000000}M subscribers</p>
@@ -102,6 +104,10 @@ const Watchpage = () => {
              </div>
            
              <div className='bg-zinc-700 rounded-full h-[2.4rem] w-[2.4rem] hover:bg-zinc-400 font-bold flex text-white justify-center'>...</div>
+          </div>
+
+          <div className='h-[150px] bg-zinc-600 rounded my-3 p-2 border border-white'>
+             
           </div>
 
           <div className='py-2 text-white'>
