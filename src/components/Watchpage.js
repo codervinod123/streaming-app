@@ -7,6 +7,8 @@ import {PiShareFatLight}  from "react-icons/pi";
 import CommentContainer from './CommentContainer';
 import {channelDetailURL,API_KEY} from "../config/constant"
 import Voice from './Voice';
+import { vedioSummary } from '../config/constant';
+
 
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
@@ -18,8 +20,11 @@ const Watchpage = () => {
     const [queriedId]=useSearchParams();
     const vedID=queriedId.get("v");
     const {channelId}=useParams()
+
     const [vedDetails,setVedDetails]=useState(null);
     const [theme,setTheme]=useState(false);
+    const [summary,setSummary]=useState(null);
+    const [expand,setExpand]=useState(false);
    
     
    
@@ -33,12 +38,27 @@ const Watchpage = () => {
       getVedioChannelDetails();
     },[])
 
+    useEffect(()=>{
+         getVedioSummary();
+    },[])
+
+    const getVedioSummary=async()=>{
+
+        const data=await fetch(vedioSummary+vedID+"&key="+API_KEY);
+        const json=await data.json();
+        setSummary(json.items[0]);
+        
+
+    }
+
     const getVedioChannelDetails=async()=>{
         const data=await fetch(channelDetailURL+channelId+"&key="+API_KEY);
         const json=await data.json();
         setVedDetails(json.items[0]);
 
     }
+
+
 
 
   
@@ -55,9 +75,9 @@ const Watchpage = () => {
 
 
 
-  return !vedDetails ? <WatchPageShimmer/> : (
+  return !vedDetails || !summary ? <WatchPageShimmer/> : (
     <div className={`w-full flex transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
-    <div  className='mx-[4rem]  my-4 px-8 rounded-sm flex flex-col '>
+    <div  className='mx-[4rem]   my-4 px-8 rounded-sm flex flex-col '>
            <iframe 
               width="640" 
               height="360" 
@@ -70,11 +90,11 @@ const Watchpage = () => {
           
 
           <div className={`w-[40rem] ${theme ? 'text-black' : 'text-white' }`}>
-              <p className='font-semibold text-xl py-2'>{vedDetails.snippet.description.slice(0,125)}...</p>
+              <p className='font-semibold text-lg py-2'>{summary.snippet.title.slice(0,110)}...</p>
           </div>
 
           <div className='flex w-[40rem] items-center'>
-             <div className='mx-2 h-[3rem] w-[3rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
+             <div className='mx-2 h-[2.6rem] w-[2.6rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
              <div>
                 <p className='font-bold'>{vedDetails.snippet.title}</p>
                 <p className='text-gray-400'>{vedDetails.statistics.subscriberCount/1000000}M subscribers</p>
@@ -102,6 +122,13 @@ const Watchpage = () => {
              </div>
            
              <div className='bg-zinc-700 rounded-full h-[2.4rem] w-[2.4rem] hover:bg-zinc-400 font-bold flex text-white justify-center'>...</div>
+          </div>
+
+          <div className='w-[40rem] bg-zinc-600 rounded my-3 p-2'>
+              <p className='text-white'>
+                 {summary.snippet.title}  
+                   <button className='font-bold px-1' onClick={()=>setExpand(!expand)}> {expand?"...More ":"...Less "}</button> 
+              </p>
           </div>
 
           <div className='py-2 text-white'>
