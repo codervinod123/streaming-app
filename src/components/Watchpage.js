@@ -6,7 +6,6 @@ import {BiLike,BiDislike} from "react-icons/bi";
 import {PiShareFatLight}  from "react-icons/pi";
 import CommentContainer from './CommentContainer';
 import {channelDetailURL,API_KEY} from "../config/constant"
-import Voice from './Voice';
 import { vedioSummary } from '../config/constant';
 
 

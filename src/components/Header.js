@@ -14,6 +14,7 @@ import { searchCache } from '../utils/searchSlice';
 import MikeListening from "../assests/mic_open.gif";
 import themeSlice from '../utils/themeSlice';
 import {toggleTheme} from '../utils/themeSlice'; 
+import Voice from './Voice';
 
 const Header = () => {
 
@@ -23,6 +24,8 @@ const Header = () => {
     const [suggestions,setSuggestions]=useState([]);
     const [showSuggestions,setShowSuggestions]=useState(false);
     const [theme,setTheme]=useState(false);
+
+    const [listening, setListening] = useState(false);
   
 
     const storedCache=useSelector((store)=>store.searchSlice);
@@ -77,39 +80,40 @@ const Header = () => {
   },[themeMode])
 
 
-    //voice search functionality
+// voice search functionality
+  
+  
 
-    const [listening, setListening] = useState(false);
-    const [text, setText] = useState('');
+   
+  const speechRecognition=new (window.SpeechRecognition || window.webkitSpeechRecognition) ();
+  speechRecognition.lang='en-US';
 
-    const handleMikeVoice=()=>{
-      setListening(!listening)
-    }
+  speechRecognition.onstart=()=>{
+     setListening(true);
+  }
 
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = 'en-US';
+  speechRecognition.onresult=(e)=>{
+     const transcript = e.results[0][0].transcript;
+     setSearchText(transcript);
+     if(transcript.length>0){
+      setShowSuggestions(true);
+     }
+     
+  }
 
-  recognition.onstart = () => {
-    setListening(true);
-  };
-
-  recognition.onresult = (event) => {
-    const transcript = event.results[0][0].transcript;
-    setText(transcript);
-  };
-
-  recognition.onend = () => {
+  speechRecognition.onend=()=>{
     setListening(false);
-  };
-
-  const handleListen = () => {
-    if (listening) {
-      recognition.stop();
-    } else {
-      recognition.start();
+ }
+  
+  
+  const handleListen=()=>{
+   if(listening){
+       speechRecognition.stop();
+    }else{
+      speechRecognition.start();
     }
-  };
-
+  }
+  
 
 
   
@@ -148,9 +152,12 @@ const Header = () => {
                       placeholder='Search'
                       className={`rounded-3xl p-2 pl-8 w-full focus:outline-none transition-all duration-500 ${theme? 'bg-white text-black' : 'bg-zinc-800 text-white' }`}
                       onChange={(e)=>setSearchText(e.target.value)}
+                      value={searchText}
                       onFocus={()=>setShowSuggestions(true)}
                       onBlur={()=>setShowSuggestions(false)}
                      />
+
+                     
               {suggestions.length>0 && showSuggestions && (<div className='bg-zinc-800 p-4 absolute top-12 left-2 w-[100%] rounded-lg'>
                  <ul>
                   {
@@ -181,17 +188,21 @@ const Header = () => {
 
              
 
-              <div onClick={()=>handleMikeVoice()} className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
-                {listening?
-                <img className='w-[1.85rem]' src={MikeListening} alt="" />
-                :<MdKeyboardVoice
-                  size="1.5rem" 
-                  className={`transition-all duration-500 ${theme ? 'text-black':'text-white'}`}
-                  title='Search With Your Voice'
-                  onClick={handleListen}
-                />
-               }
-              </div> 
+           {/*    voice search functionality */}
+
+
+         <div  onClick={handleListen} className='p-2 mx-1 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+               
+             {
+                listening?
+                <img className='w-[1.88rem]' src={MikeListening} alt="" />
+                : <MdKeyboardVoice
+                    size="1.5rem" 
+                    className={`transition-all duration-500 text-white`}
+                    title='Search With Your Voice'
+                  />
+             }
+         </div> 
              
 
           </div>
