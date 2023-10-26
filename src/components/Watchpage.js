@@ -11,6 +11,7 @@ import { vedioSummary } from '../config/constant';
 
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
+import LiveCommentContainer from './LiveCommentContainer';
 
 
 const Watchpage = () => {
@@ -76,7 +77,7 @@ const Watchpage = () => {
 
   return !vedDetails || !summary ? <WatchPageShimmer/> : (
     <div className={`w-full flex transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
-    <div  className='mx-[4rem]   my-4 px-8 rounded-sm flex flex-col '>
+    <div  className='ml-[4rem]   my-4 pl-8 rounded-sm flex flex-col '>
            <iframe 
               width="640" 
               height="360" 
@@ -137,6 +138,10 @@ const Watchpage = () => {
 
     </div>
 
+      <div className=''>
+        <LiveCommentContainer/>
+      </div>
+   
     </div>
   )
 }
