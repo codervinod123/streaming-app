@@ -6,6 +6,8 @@ import { TfiSearch } from "react-icons/tfi";
 import {MdKeyboardVoice} from "react-icons/md";
 import {FaUserCircle} from "react-icons/fa";
 import {IoMdNotificationsOutline} from "react-icons/io"
+import {CiSun} from "react-icons/ci";
+import {BsMoonFill} from "react-icons/bs";
 import {RiVideoAddLine} from "react-icons/ri"
 import {useDispatch} from "react-redux"
 import { toggleSIdebarMenu } from '../utils/sidebarSlice';
@@ -207,9 +209,7 @@ const Header = () => {
 
           </div>
 
-          <button onClick={()=>handleThemeToggle()} className='bg-red-700 rounded px-2 py-1 text-white'>
-             Theme
-          </button>
+         
 
 
           <div className={`flex ml-10 transition-all duration-500 ${theme ? 'text-black':'text-white'}`}>
@@ -234,6 +234,24 @@ const Header = () => {
                     size="1.5rem"
                     className=''
                  />
+              </div>
+
+             
+              <div onClick={()=>handleThemeToggle()} className='p-2 pl-2 cursor-pointer hover:bg-zinc-700 rounded-full'>
+                 {
+                  theme?
+                 <BsMoonFill
+                    size="1.5rem"
+                    className='text-black'
+                 />
+                 : 
+                 <CiSun
+                  size="1.5rem"
+                  className='text-yellow-600'
+                 />
+                 
+               
+                 }
               </div>
              
              

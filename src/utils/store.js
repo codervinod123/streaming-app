@@ -2,6 +2,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import sidebarSlice from "./sidebarSlice";
 import searchSlice from "./searchSlice";
 import themeSlice from "./themeSlice";
+import liveCommentSlice from "./liveCommentSlice";
 
 
 
@@ -10,6 +11,7 @@ const store = configureStore({
               sidebarSlice: sidebarSlice,
               searchSlice: searchSlice,
               themeSlice:themeSlice,
+              liveCommentSlice:liveCommentSlice,
        }
 })
 

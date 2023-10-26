@@ -36,7 +36,7 @@ const WatchPageShimmer = () => {
             {
                 suggestionLength.map((data,index)=>{
                     return(
-                        <div className='flex gap-6 pt-3'>
+                        <div key={index} className='flex gap-6 pt-3'>
 
                            <div className='w-[200px] h-[120px] bg-gray-500 rounded '></div>
                            
