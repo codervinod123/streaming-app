@@ -17,28 +17,52 @@ const VedioContainer = () => {
 
     const [vedios,setVedios]=useState([]);
     const [theme,setTheme]=useState(false);
+    const [nextPageToken,setNextPageToken]=useState("");
+
+    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
+
+    useEffect(()=>{
+      setTheme(themeMode);
+    },[themeMode])
+ 
+    
+    const getVedios=async(nextPageToken="")=>{
+      const data=await fetch(`${YOUTUBE_API_URL}${nextPageToken}`);
+      const json=await data.json();
+      setVedios((prev)=>[...prev,...json.items]);
+      setNextPageToken(json.nextPageToken)
+   }
 
     useEffect(()=>{
           getVedios();
     },[]);
 
-    const getVedios=async()=>{
-        const data=await fetch(YOUTUBE_API_URL);
-        const json=await data.json();
-        setVedios(json.items);
-    }
+    
 
-   
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
+  //  infinite scroll
+  const handleScroll=()=>{
+       const total=document.documentElement.scrollHeight;
+       const innerHeight=window.innerHeight;
+       const scrolled=document.documentElement.scrollTop;
 
-  useEffect(()=>{
-    setTheme(themeMode);
-  },[themeMode])
- 
+       if(innerHeight+scrolled+30>total){
+      
+          if(nextPageToken){
+            getVedios(nextPageToken);
+          }
+       }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [nextPageToken]);
 
   
   return vedios.length===0 ? <Shimmer/> : (
-    <div className='flex'>
+    <div className=''>
 
      
       <div className={`flex flex-wrap gap-8 m-4 justify-center transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
@@ -52,6 +76,14 @@ const VedioContainer = () => {
            })
        }
       </div>
+           
+      
+      {/* <button
+        onClick={
+          ()=>getVedios()}
+         className='bg-pink-600 px-2 py-1 rounded'>
+         Load More
+      </button> */}
 
     </div>
   )
