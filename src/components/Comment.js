@@ -1,27 +1,37 @@
-import React,{useState,useEffect} from 'react';
-import {BiLike,BiDislike} from "react-icons/bi";
+import React, { useState, useEffect } from 'react';
+import { BiLike, BiDislike } from "react-icons/bi";
 import { useSelector } from 'react-redux';
 
-const Comment = ({data}) => {
+const Comment = ({ data }) => {
 
 
-   
-  const [theme,setTheme]=useState(false);
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
 
-  useEffect(()=>{
-    setTheme(themeMode);
-  },[themeMode])
- 
-   
+    const [theme, setTheme] = useState(false);
+    const themeMode = useSelector((store) => store.themeSlice.isLightTheme);
+
+    useEffect(() => {
+        setTheme(themeMode);
+    }, [themeMode])
+
+
     return (
-        <div className='flex gap-2'>
-            <div className='mx-2 h-[2.5rem] w-[2.5rem] mt-1'>
+        <div className='flex gap-2 shadow-sm'>
+
+            <div className='mx-2 w-[40px] h-[40px]'>
                 <img className='rounded-full' src={data.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="user" />
             </div>
-            <div className={`${theme? 'text-black':'text-white'}`}>
-                <h1>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
-                <p>{data.snippet.topLevelComment.snippet.textDisplay}</p>
+
+
+
+            <div className={`${theme ? 'text-black' : 'text-white'}`}>
+
+
+                <h1 className='font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
+                <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 40)}</h1>
+
+
+
+
 
                 <div className={`flex gap-4 py-2`}>
                     <BiLike

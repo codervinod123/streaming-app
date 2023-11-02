@@ -40,11 +40,11 @@ const LiveCommentContainer = () => {
     <div className='w-[95%]'>
     <div className='flex flex-col-reverse mb-1 mt-4 mx-4 h-[320px] border border-white rounded text-white overflow-y-auto'>
        {
-          comments.map((data)=>{
+          comments.map((data,index)=>{
             return(
-                <>
+                <div key={index}>
                   <LiveComment name={data.name} message={data.message+"👌"}/>
-                </>
+                </div>
             )
           })
        }
