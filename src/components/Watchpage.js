@@ -96,14 +96,15 @@ const Watchpage = () => {
           <div className='flex w-[40rem] items-center'>
              <div className='mx-2 h-[2.6rem] w-[2.6rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
              <div>
-                <p className='font-bold'>{vedDetails.snippet.title}</p>
-                <p className='text-gray-400'>{vedDetails.statistics.subscriberCount/1000000}M subscribers</p>
+                <p className={`font-bold ${theme?"text-black":"text-white"}`}>{vedDetails.snippet.title}</p>
+                <p className={`${theme?"text-gray-800":"text-gray-300"}`}>{vedDetails.statistics.subscriberCount/1000000}M subscribers</p>
              </div>
              <div className='mx-8'>
                 <button className='bg-gray-200 px-4 py-[.4rem] rounded-full font-semibold'>Subscribe</button>
              </div>
+             
              <div>
-             <div className='bg-zinc-700 cursor-pointer text-white px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
+              <div className='bg-zinc-700 cursor-pointer text-white px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
                    <BiLike 
                      size={"1.5rem"}
                     //  className='border-r'
@@ -112,7 +113,7 @@ const Watchpage = () => {
                    <BiDislike
                      size={"1.5rem"}
                    />
-             </div>
+              </div>
              </div>
         
              <div className='mx-4'> 

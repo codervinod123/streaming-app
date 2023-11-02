@@ -118,10 +118,6 @@ import {commentsURL,API_KEY} from "../config/constant"
 
 const CommentList=({comments})=>{
 
-  
-
-   
-
   return(
     <>
 
@@ -129,8 +125,8 @@ const CommentList=({comments})=>{
         comments.map((data,index)=>{
           return(
             <div key={index}>
-             <Comment data={data}/>
-             {/* <div className='pl-6 border-l border-white'>
+             <Comment key={index} data={data}/>
+              {/* <div className='pl-6 border-l border-white'>
                <CommentList comments={data.replies}/>
              </div> */}
             </div>
@@ -145,9 +141,8 @@ const CommentList=({comments})=>{
 
 const CommentContainer = ({vedioId}) => {
 
- 
-
   const [comments,setComments]=useState([]);
+  const [token,setToken]=useState("");
 
   useEffect(()=>{
     getComments();
@@ -155,16 +150,29 @@ const CommentContainer = ({vedioId}) => {
   
   const getComments=async()=>{
       
-      const data=await fetch(commentsURL+"videoId="+vedioId+"&key="+API_KEY);
+      const data=await fetch(commentsURL+"videoId="+vedioId+"&key="+API_KEY+(token ? '&pageToken=' + token : ''));
       const json=await data.json();
-      setComments(json.items);
+      setToken(json.nextPageToken);
+      if(token){
+        setComments((prev)=>[...prev,...json.items]); 
+      } else{
+        setComments(json.items);
+      }
+     
   }
 
+  const nextPageToken=async()=>{
+     getComments();
+     console.log("click")
+  }
 
   return (
     <div className='w-[40rem]'>
         <h1 className='font-bold'>Comments :</h1>
         <CommentList comments={comments}/>
+        <div className='w-full flex justify-center'>
+           <button onClick={nextPageToken} className='bg-gray-600 font-bold px-6 py-1 rounded'>Load More</button>
+        </div>
     </div>
   )
 }
