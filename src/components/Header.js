@@ -50,8 +50,10 @@ const Header = () => {
     },[searchText]);
 
     const getSearchResult=async()=>{
-        const data=await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchText}`);
+                     //         https://corsproxy.io/?https://clients1.google.com/complete/search?client=firefox&ds=yt&q=http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=
+        const data=await fetch(`https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchText}`);
         const json=await data.json();
+        console.log(data);
         setSuggestions(json[1]);
         dispatch(searchCache({
            [searchText]:json[1]
