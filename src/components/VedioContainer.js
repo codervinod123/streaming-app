@@ -4,13 +4,7 @@ import Vediocard from './Vediocard';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 import { useSelector } from 'react-redux';
-// import {ImFire} from "react-icons/im"
 
-// import {
-//   MdHomeFilled,
-//   MdOutlineSubscriptions,
-//   MdOutlineVideoLibrary,
-// } from "react-icons/md";
 
 const VedioContainer = () => {
 
@@ -32,10 +26,12 @@ const VedioContainer = () => {
       setVedios((prev)=>[...prev,...json.items]);
       setNextPageToken(json.nextPageToken)
    }
-
+   
     useEffect(()=>{
           getVedios();
     },[]);
+
+   
 
     
 
@@ -45,7 +41,7 @@ const VedioContainer = () => {
        const innerHeight=window.innerHeight;
        const scrolled=document.documentElement.scrollTop;
 
-       if(innerHeight+scrolled+30>total){
+       if(innerHeight+scrolled+1>total){
       
           if(nextPageToken){
             getVedios(nextPageToken);
@@ -77,13 +73,7 @@ const VedioContainer = () => {
        }
       </div>
            
-      
-      {/* <button
-        onClick={
-          ()=>getVedios()}
-         className='bg-pink-600 px-2 py-1 rounded'>
-         Load More
-      </button> */}
+    
 
     </div>
   )

@@ -48,8 +48,7 @@ const LiveCommentContainer = () => {
             )
           })
        }
-     
-    </div>
+     </div>
 
        <div className='mx-4 py-1 w-[95%] rounded bg-slate-300 flex items-center'>
          <form onSubmit={(e)=>handleSubmit(e)}>
