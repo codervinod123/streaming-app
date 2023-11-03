@@ -27,7 +27,7 @@ const Comment = ({ data }) => {
 
 
                 <h1 className='font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
-                <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 40)}</h1>
+                <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 60)}</h1>
 
 
 
