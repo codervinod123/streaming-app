@@ -23,8 +23,12 @@ const VedioContainer = () => {
     const getVedios=async(nextPageToken="")=>{
       const data=await fetch(`${YOUTUBE_API_URL}${nextPageToken}`);
       const json=await data.json();
-      setVedios((prev)=>[...prev,...json.items]);
       setNextPageToken(json.nextPageToken)
+      if(nextPageToken){
+        setVedios((prev)=>[...prev,...json.items]);
+      }else{
+        setVedios(json.items);
+      }
    }
    
     useEffect(()=>{
