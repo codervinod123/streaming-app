@@ -3,6 +3,7 @@ import sidebarSlice from "./sidebarSlice";
 import searchSlice from "./searchSlice";
 import themeSlice from "./themeSlice";
 import liveCommentSlice from "./liveCommentSlice";
+import searchVideoSlice from "./videoSlice";
 
 
 
@@ -12,6 +13,7 @@ const store = configureStore({
               searchSlice: searchSlice,
               themeSlice:themeSlice,
               liveCommentSlice:liveCommentSlice,
+              searchVideoSlice:searchVideoSlice,
        }
 })
 
