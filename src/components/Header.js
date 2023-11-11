@@ -17,10 +17,12 @@ import MikeListening from "../assests/mic_open.gif";
 import themeSlice from '../utils/themeSlice';
 import {toggleTheme} from '../utils/themeSlice'; 
 import Voice from './Voice';
+import { setSearch } from '../utils/videoSlice';
+import { addVideo } from '../utils/videoSlice';
 
 const Header = () => {
 
-   
+     
     const dispatch=useDispatch();
     const [searchText,setSearchText]=useState("");
     const [suggestions,setSuggestions]=useState([]);
@@ -50,10 +52,10 @@ const Header = () => {
     },[searchText]);
 
     const getSearchResult=async()=>{
-                     //         https://corsproxy.io/?https://clients1.google.com/complete/search?client=firefox&ds=yt&q=http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=
+                    
         const data=await fetch(`https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchText}`);
         const json=await data.json();
-        console.log(data);
+      
         setSuggestions(json[1]);
         dispatch(searchCache({
            [searchText]:json[1]
@@ -119,6 +121,24 @@ const Header = () => {
   }
   
 
+  //search functionality
+
+  const handleSubmit=(e)=>{
+     e.preventDefault();
+    if(searchText){
+      dispatch(setSearch());
+      searchResult();
+    }
+  }
+
+  const searchResult=async()=>{
+        const data=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${searchText}&key=AIzaSyB8bmu-ptu-aF0mldG3a3JWT5-pccwMS4E`);
+        const json=await data.json();
+      //   console.log(json.items);
+        dispatch(addVideo(json.items));
+        
+  } 
+
 
   
    
@@ -150,6 +170,7 @@ const Header = () => {
 
             
               <div className={`relative flex items-center rounded-l-3xl  border border-gray-500 ml-10 w-full transition-all duration-500 ${theme ? 'bg-white':'bg-zinc-800'}`}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
                   <input 
                       type="text"
                       name='searchbar'
@@ -160,6 +181,7 @@ const Header = () => {
                       onFocus={()=>setShowSuggestions(true)}
                       onBlur={()=>setShowSuggestions(false)}
                      />
+                  </form>
 
                      
               {suggestions.length>0 && showSuggestions && (<div className='bg-zinc-800 p-4 absolute top-12 left-2 w-[100%] rounded-lg'>
@@ -182,10 +204,11 @@ const Header = () => {
           
    
 
-              <div className={`border border-gray-500 px-4 p-3 rounded-r-3xl cursor-pointer transition-all duration-500 ${theme ? 'bg-white text-black' : 'bg-zinc-700 text-white'}`}>
+              <div onClick={(e)=>handleSubmit(e)} className={`border border-gray-500 px-4 p-3 rounded-r-3xl cursor-pointer transition-all duration-500 ${theme ? 'bg-white text-black' : 'bg-zinc-700 text-white'}`}>
                  <TfiSearch
                     size="1rem"
-                  title='Search'
+                    title='Search'
+                    
                  />
               </div>
 

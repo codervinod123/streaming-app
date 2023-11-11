@@ -4,17 +4,18 @@ import Vediocard from './Vediocard';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 import { useSelector } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import SearchResultCard from './SearchResultCard';
 
 const VedioContainer = () => {
-
+   
 
     const [vedios,setVedios]=useState([]);
     const [theme,setTheme]=useState(false);
     const [nextPageToken,setNextPageToken]=useState("");
 
     const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-
+    
     useEffect(()=>{
       setTheme(themeMode);
     },[themeMode])
@@ -24,8 +25,13 @@ const VedioContainer = () => {
       const data=await fetch(`${YOUTUBE_API_URL}${nextPageToken}`);
       const json=await data.json();
       setNextPageToken(json.nextPageToken)
+
+      // video slice
+
+     
+
       if(nextPageToken){
-        setVedios((prev)=>[...prev,...json.items]);
+        setVedios((prev)=>[...prev,...json.items]); 
       }else{
         setVedios(json.items);
       }
@@ -60,8 +66,32 @@ const VedioContainer = () => {
     };
   }, [nextPageToken]);
 
+
+  //  searched video implementation
+
+  const isSearchOn=useSelector((store)=>store.searchVideoSlice.isSearchOn);
+  const val=useSelector((store)=>store.searchVideoSlice.videos);
   
-  return vedios.length===0 ? <Shimmer/> : (
+
+
+  if(isSearchOn) return(
+    <div className=''>
+    <div className={`flex flex-wrap gap-8 m-4 justify-center transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
+    {
+        val.map((data,index)=>{
+          return(
+            <Link key={index} to={"watch/"+data.snippet.channelId+"?v="+data.id.videoId}>
+              <SearchResultCard  info={data} theme={theme}/>
+            </Link>
+          )
+        })
+    }
+   </div>
+   </div>
+  )
+
+  
+  else return vedios.length===0 ? <Shimmer/> : (
     <div className=''>
 
      
@@ -76,9 +106,6 @@ const VedioContainer = () => {
            })
        }
       </div>
-           
-    
-
     </div>
   )
 }

@@ -12,6 +12,7 @@ import { vedioSummary } from '../config/constant';
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
 import LiveCommentContainer from './LiveCommentContainer';
+import Suggestions from './Suggestions';
 
 
 const Watchpage = () => {
@@ -138,11 +139,19 @@ const Watchpage = () => {
 
 
     </div>
+ 
+      <div className='w-[95%]'>
+        <div className='flex mt-4 p-4 mx-4 h-[360px] border border-white rounded text-white overflow-y-auto'>
 
-      <div className=''>
+          <Suggestions videoID={vedID}/>
+
+        </div>
+      </div>
+
+      {/* <div className=''>
         <LiveCommentContainer/>
       </div>
-   
+    */}
     </div>
   )
 }
