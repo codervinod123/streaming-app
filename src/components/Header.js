@@ -55,7 +55,7 @@ const Header = () => {
                     
         const data=await fetch(`https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchText}`);
         const json=await data.json();
-        console.log(data);
+      
         setSuggestions(json[1]);
         dispatch(searchCache({
            [searchText]:json[1]
@@ -132,12 +132,12 @@ const Header = () => {
   }
 
   const searchResult=async()=>{
-        const data=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=55&q=${searchText}&key=AIzaSyB8bmu-ptu-aF0mldG3a3JWT5-pccwMS4E`);
+        const data=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${searchText}&key=AIzaSyB8bmu-ptu-aF0mldG3a3JWT5-pccwMS4E`);
         const json=await data.json();
-        console.log(json.items);
+      //   console.log(json.items);
         dispatch(addVideo(json.items));
         
-  }
+  } 
 
 
   

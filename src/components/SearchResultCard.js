@@ -4,7 +4,7 @@ import React from 'react'
 const SearchResultCard = ({ info,theme }) => {
 
    
-    console.log(info);
+   console.log(info);
     return (
         <div className=''>
 
