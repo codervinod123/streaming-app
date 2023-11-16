@@ -170,12 +170,14 @@ const Header = () => {
 
             
               <div className={`relative flex items-center rounded-l-3xl  border border-gray-500 ml-10 w-full transition-all duration-500 ${theme ? 'bg-white':'bg-zinc-800'}`}>
-                <form onSubmit={(e)=>handleSubmit(e)}>
+                <form onSubmit={(e)=>handleSubmit(e)}
+                 className={`rounded-3xl w-full  transition-all duration-500 ${theme? 'bg-white text-black' : 'bg-zinc-800 text-white' }`}
+                >
                   <input 
                       type="text"
                       name='searchbar'
                       placeholder='Search'
-                      className={`rounded-3xl p-2 pl-8 w-full focus:outline-none transition-all duration-500 ${theme? 'bg-white text-black' : 'bg-zinc-800 text-white' }`}
+                      className={`rounded-3xl p-2 pl-8 w-full border-none outline-none transition-all duration-500 ${theme? 'bg-white text-black' : 'bg-zinc-800 text-white' }`}
                       onChange={(e)=>setSearchText(e.target.value)}
                       value={searchText}
                       onFocus={()=>setShowSuggestions(true)}
