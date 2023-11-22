@@ -182,6 +182,7 @@ const Header = () => {
                       value={searchText}
                       onFocus={()=>setShowSuggestions(true)}
                       onBlur={()=>setShowSuggestions(false)}
+                      autoComplete='off'
                      />
                   </form>
 
