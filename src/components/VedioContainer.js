@@ -95,7 +95,7 @@ const VedioContainer = () => {
     <div className=''>
 
      
-      <div className={`flex flex-wrap gap-8 m-4 justify-center transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
+      <div className={`flex flex-wrap gap-6 p-2 m-4 transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
        {
            vedios.map((data)=>{
              return(
