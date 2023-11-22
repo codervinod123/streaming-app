@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
-import logo_dark from "../assests/logo_dark_theme.webp"
-import logo_light from "../assests/logo_light_theme.webp";
+
+import YOUTUBE_LIGHT from "../assests/logo_light.png"
+import YOUTUBE_DARK from "../assests/logo_dark.png"
+
 import { TfiSearch } from "react-icons/tfi";
 import {MdKeyboardVoice} from "react-icons/md";
 import {FaUserCircle} from "react-icons/fa";
@@ -149,17 +151,18 @@ const Header = () => {
                <RxHamburgerMenu
                 className='cursor-pointer'
                 title='Menu'
-                size="1.5rem"
+                size="1.3rem"
                />
              </button>
 
              <div className='cursor-pointer flex items-center transition-all duration-500'>
                 <a href="/">
                   <img 
-                      src={theme? logo_light : logo_dark } 
+                      src={theme? YOUTUBE_LIGHT : YOUTUBE_DARK } 
                       alt="Youtube Home"
-                      className='pl-4 w-32 transition-all duration-500'
+                      className='pl-4 w-28 transition-all duration-500'
                       title='logo'  
+                      
                   />
                 </a>
              </div>
