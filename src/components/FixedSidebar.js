@@ -8,11 +8,15 @@ import {
 } from "react-icons/md";
 import {useSelector} from "react-redux"
 import { Link } from "react-router-dom";
+import "./global.css"
 
 
 const FixedSidebar = () => {
 
-   const [theme,setTheme]=useState(false);
+
+
+
+  const [theme,setTheme]=useState(false);
  
     const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
     const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
@@ -22,10 +26,12 @@ const FixedSidebar = () => {
     },[themeMode])
    
 
+    if(isSidebarOpen) return null;
+
   
    
   return (
-    <div className={`flex flex-col  min-w-fit transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
+    <div className={`fixedbar flex flex-col  min-w-fit transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex flex-col text-sm px-1 py-4">
             
             <Link to="/">
@@ -52,7 +58,7 @@ const FixedSidebar = () => {
                    size="1.3rem"
                    className=""
                  />
-                <span className="text-xs">Home</span>
+                <span className="text-xs">Shorts</span>
             </div>
 
             <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">

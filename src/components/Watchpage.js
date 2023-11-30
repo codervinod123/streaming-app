@@ -1,14 +1,12 @@
 import React, { useEffect ,useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { closeSidebar } from '../utils/sidebarSlice';
+import { closeSidebar,closeFixedBar } from '../utils/sidebarSlice';
 import { useParams, useSearchParams } from 'react-router-dom';
 import {BiLike,BiDislike} from "react-icons/bi";
 import {PiShareFatLight}  from "react-icons/pi";
 import CommentContainer from './CommentContainer';
 import {channelDetailURL,API_KEY} from "../config/constant"
 import { vedioSummary } from '../config/constant';
-
-
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
 import LiveCommentContainer from './LiveCommentContainer';
@@ -33,6 +31,7 @@ const Watchpage = () => {
    
     useEffect(()=>{
        dispatch(closeSidebar());
+       dispatch(closeFixedBar());
     },[])
 
     useEffect(()=>{
@@ -44,12 +43,9 @@ const Watchpage = () => {
     },[])
 
     const getVedioSummary=async()=>{
-
         const data=await fetch(vedioSummary+vedID+"&key="+API_KEY);
         const json=await data.json();
         setSummary(json.items[0]);
-        
-
     }
 
     const getVedioChannelDetails=async()=>{
@@ -77,8 +73,8 @@ const Watchpage = () => {
 
 
   return !vedDetails || !summary ? <WatchPageShimmer/> : (
-    <div className={`w-full flex transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
-    <div  className='ml-[4rem]   my-4 pl-8 rounded-sm flex flex-col '>
+    <div className={`flex relative w-screen transition-all duration-500  bg-zinc-900 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
+    <div  className='ml-[4rem] py-4 pl-8 rounded-sm flex flex-col bg-zinc-900'>
            <iframe 
               width="640" 
               height="360" 
@@ -140,20 +136,42 @@ const Watchpage = () => {
 
     </div>
  
-      <div className='w-[95%]'>
-        <div className='flex mt-4 p-4 mx-4 h-[360px] border border-white rounded text-white overflow-y-auto'>
-
-          <Suggestions videoID={vedID}/>
-
-        </div>
-      </div>
-
-      {/* <div className=''>
+     
+      <div className=''>
         <LiveCommentContainer/>
       </div>
-    */}
+   
     </div>
   )
 }
 
 export default Watchpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <div className='w-[95%]'>
+        <div className='flex mt-4 p-4 mx-4 h-[360px] border border-white rounded text-white overflow-y-auto'>
+
+          <Suggestions videoID={vedID}/>
+
+        </div>
+      </div> */}
