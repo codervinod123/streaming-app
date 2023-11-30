@@ -5,40 +5,16 @@
 
 
 ::-webkit-scrollbar{
-   width: 10px;
+   width: 8px;
    background-color: rgb(24 24 27);
 }
 
 
-::-webkit-scrollbar-track{
-    padding: 0 5px;
-}
 
 
-
-::-webkit-scrollbar-thumb{
-    background-color: rgb(165, 165, 177);
+ ::-webkit-scrollbar-thumb{
+    background-color: rgb(227, 227, 231);
     width: 20px;
     border-radius: 10px;
-}
+} 
 
-
-.global{
-    background-color: rgb(224, 224, 238);
-}
-
-.sidebar{
-    user-select: none;
-    overflow: hidden;
-}
-
-/* .sidebar::-webkit-scrollbar{
-    width: 15px;
-    background-color: rgb(48, 48, 160);
-}
-
-.sidebar::-webkit-scrollbar-thumb{
-    background-color: rgb(203, 74, 74);
-    width: 20px;
-    border-radius: 10px;
-} */
