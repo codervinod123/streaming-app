@@ -13,7 +13,9 @@ const buttons=[
   "Bikes",
   "Engineering",
   "Riding",
-  "Education"
+  "Education",
+  "Engineering",
+  "UPSC"
 ]
 
 const ButtonList = () => {

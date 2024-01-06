@@ -18,3 +18,14 @@
 .fixedbar{
     position: sticky;
 }
+
+/* .buttonlist {
+   background: greenyellow; 
+  } */
+
+
+  .buttonlist-container {
+    overflow: auto; /* Enable both vertical and horizontal scrollbars when content overflows */
+    max-height: 100vh; /* Set a maximum height for the container */
+    max-width: 100%; /* Set a maximum width for the container */
+  }
