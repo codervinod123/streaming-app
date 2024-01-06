@@ -166,7 +166,7 @@ const Header = () => {
              </div>
           </div>
 
-          <div className='w-3/5 flex-1 flex ml-16 items-center relative'>
+          <div className='w-3/5 flex-1 hidden  md:visible md:flex lg:visible lg:flex ml-16 items-center relative'>
               
 
             
