@@ -19,10 +19,10 @@ const Maincontainer = () => {
     <div className="relative flex">
       <Sidebar />
 
-      <div className={`transition-all duration-500 ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
+      <div className={`transition-all w-[100%] duration-500 ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
         
         {/* <div className='buttonlist-container border border-white overflow-auto max-h-screen max-w-screen-xl'> */}
-          <ButtonList />
+          {/* <ButtonList /> */}
         {/* </div> */}
 
 
