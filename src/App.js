@@ -29,7 +29,7 @@ const appRouter=createBrowserRouter([{
 const App = () => {
   return (
     <Provider store={store}>
-     <div className='global'>
+     <div className='global w-full'>
         <Header/>
         <RouterProvider router={appRouter}/>
      </div>

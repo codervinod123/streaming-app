@@ -158,7 +158,7 @@ const Header = () => {
                   <img 
                       src={theme? YOUTUBE_LIGHT : YOUTUBE_DARK } 
                       alt="Youtube Home"
-                      className='pl-4 w-28 transition-all duration-500'
+                      className='pl-4 w-[7rem] transition-all duration-500'
                       title='logo'  
                       
                   />
