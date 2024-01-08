@@ -13,7 +13,7 @@ const Body = () => {
   
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '6% 94%' }} className='flex'>
+    <div className='flex w-[100%]'>
       {fixedSidebarStatus && <FixedSidebar />}
       <Outlet/>
     </div>

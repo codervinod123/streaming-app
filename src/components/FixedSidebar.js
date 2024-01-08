@@ -31,7 +31,7 @@ const FixedSidebar = () => {
   
    
   return (
-    <div className={`fixedbar flex flex-col  min-w-fit transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
+    <div className={`w-[4rem] justify-center transition-all hidden md:flex lg:flex duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex flex-col text-sm px-1 py-4">
             
             <Link to="/">
@@ -61,12 +61,14 @@ const FixedSidebar = () => {
                 <span className="text-xs">Shorts</span>
             </div>
 
+           
+
             <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">
             <MdOutlineWatchLater
                    size="1.3rem"
                    className=""
                  />
-                <span className="text-xs">Watch Later</span>
+                <span className="text-xs">Watch</span>
             </div>
 
         

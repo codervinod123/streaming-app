@@ -16,8 +16,8 @@ const Maincontainer = () => {
   }, [themeMode]);
 
   return (
-    <div className="relative flex">
-      <Sidebar />
+    <div className="relative flex w-full">
+      {/* <Sidebar /> */}
 
       <div className={`transition-all w-[100%] duration-500 ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
         

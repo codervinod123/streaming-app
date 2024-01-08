@@ -95,7 +95,7 @@ const VedioContainer = () => {
     <div className=''>
 
      
-      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-auto gap-6 p-2 m-4 transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
+      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-auto gap-6 my-4  lg:m-4 sm:m-4 md:m-4 transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
        {
            vedios.map((data)=>{
              return(
