@@ -166,7 +166,7 @@ const Header = () => {
              </div>
           </div>
 
-          <div className='w-3/5 flex-1 hidden  md:visible md:flex lg:visible lg:flex ml-16 items-center relative'>
+          <div className='w-3/5 flex-1 hidden md:flex lg:flex ml-16 items-center relative'>
               
 
             
@@ -243,7 +243,7 @@ const Header = () => {
 
           <div className={`flex ml-10 transition-all duration-500 ${theme ? 'text-black':'text-white'}`}>
   
-          <div className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+          <div className='p-2 ml-4 hidden sm:flex md:flex lg:flex cursor-pointer hover:bg-zinc-700 rounded-full'>
                  <RiVideoAddLine
                     size="1.5rem"
                     className=''
@@ -251,7 +251,7 @@ const Header = () => {
                  />
               </div>
 
-              <div className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+              <div className='p-2 hidden sm:flex md:flex lg:flex ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
                  <IoMdNotificationsOutline
                     size="1.5rem"
                     className=''
