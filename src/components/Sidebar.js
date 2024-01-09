@@ -45,7 +45,7 @@ const Sidebar = () => {
     if(!isSidebarOpen) return null;
    
   return (
-    <div className={` sidebar w-[15rem] flex flex-col  min-w-fit overflow-y-scroll transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
+    <div className={`sidebar w-[15rem]  flex flex-col transition-all duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex w-[15rem] flex-col pl-2 pr-6 text-sm ">
             
             <Link to="/">
@@ -345,3 +345,4 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+

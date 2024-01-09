@@ -9,12 +9,14 @@ const sidebarSlice=createSlice({
     reducers:{
         toggleSIdebarMenu:(state)=>{
             state.isMenuOpen=!state.isMenuOpen;
+            state.isFixedbarOpen=!state.isFixedbarOpen;
         },
         closeSidebar:(state)=>{
             state.isMenuOpen=false;
         },
         closeFixedBar:(state)=>{
-            state.isFixedbarOpen=false;
+            state.isFixedbarOpen=!state.isFixedbarOpen;
+            state.isMenuOpen=!state.isMenuOpen;
         }
 
     }

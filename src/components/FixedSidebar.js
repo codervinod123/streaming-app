@@ -31,7 +31,7 @@ const FixedSidebar = () => {
   
    
   return (
-    <div className={`w-[4rem] justify-center transition-all hidden md:flex lg:flex duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
+    <div className={`w-[full] h-[100vh] justify-center transition-all bg-zinc-900 hidden sm:flex md:flex lg:flex duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex flex-col text-sm px-1 py-4">
             
             <Link to="/">
