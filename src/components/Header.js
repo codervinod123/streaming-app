@@ -145,7 +145,7 @@ const Header = () => {
   return (
     <div className={`flex justify-between items-center px-4 py-2 shadow-lg h-[3.8rem] transition-all duration-500 w-full top-0 z-10 sticky ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
           <div className='left-items flex items-center'>
-             <button onClick={()=>handleToggleClick()} className={`rounded-full hover:bg-zinc-700 p-2 transition-all duration-500 ${theme ?  'text-black' : 'text-white' }`}>
+             <button onClick={()=>handleToggleClick()} className={`rounded-full  p-2 transition-all duration-500 ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                <RxHamburgerMenu
                 className='cursor-pointer'
                 title='Menu'
@@ -243,7 +243,7 @@ const Header = () => {
 
           <div className={`flex ml-10 transition-all duration-500 ${theme ? 'text-black':'text-white'}`}>
   
-          <div className='p-2 ml-4 hidden sm:flex md:flex lg:flex cursor-pointer hover:bg-zinc-700 rounded-full'>
+          <div className={`rounded-full ml-4 cursor-pointer p-2 transition-all duration-500 ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                  <RiVideoAddLine
                     size="1.5rem"
                     className=''
@@ -251,14 +251,14 @@ const Header = () => {
                  />
               </div>
 
-              <div className='p-2 hidden sm:flex md:flex lg:flex ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+              <div className={`rounded-full ml-4 cursor-pointer p-2 transition-all duration-500 ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                  <IoMdNotificationsOutline
                     size="1.5rem"
                     className=''
                     title='Notifications'
                  />
               </div>
-             <div className='p-2 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+             <div className={`rounded-full ml-4 cursor-pointer p-2 transition-all duration-500 ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                  <FaUserCircle
                     size="1.5rem"
                     className=''
@@ -266,7 +266,7 @@ const Header = () => {
               </div>
 
              
-              <div onClick={()=>handleThemeToggle()} className='p-2 pl-2 cursor-pointer hover:bg-zinc-700 rounded-full'>
+              <div onClick={()=>handleThemeToggle()} className={`rounded-full ml-4 cursor-pointer p-2 transition-all duration-500 ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                  {
                   theme?
                  <BsMoonFill
