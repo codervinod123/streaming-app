@@ -31,11 +31,11 @@ const FixedSidebar = () => {
   
    
   return (
-    <div className={`w-[full] h-[100vh] justify-center transition-all bg-zinc-900 hidden sm:flex md:flex lg:flex duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
+    <div className={`w-[full] h-[100vh] justify-center transition-all hidden sm:flex md:flex lg:flex duration-500 ${theme ? 'bg-white text-black': 'bg-zinc-900 text-white'}`}>
         <div className="flex flex-col text-sm px-1 py-4">
             
             <Link to="/">
-              <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">
+              <div className={`flex flex-col px-3 py-4 items-center justify-center rounded-lg cursor-pointer ${theme?"hover:bg-gray-300":"hover:bg-zinc-800"} `}>
                 <MdHomeFilled 
                   size="1.3rem"
                   className=""
@@ -45,7 +45,7 @@ const FixedSidebar = () => {
             </Link>
                 
 
-            <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">
+            <div className={`flex flex-col px-3 py-4 items-center justify-center rounded-lg cursor-pointer ${theme?"hover:bg-gray-300":"hover:bg-zinc-800"} `}>
             <MdOutlineSubscriptions
                    size="1.3rem"
                    className=""
@@ -53,7 +53,7 @@ const FixedSidebar = () => {
                 <span className="text-xs">Home</span>
             </div>
 
-            <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">
+            <div className={`flex flex-col px-3 py-4 items-center justify-center rounded-lg cursor-pointer ${theme?"hover:bg-gray-300":"hover:bg-zinc-800"} `}>
             <MdOutlineVideoLibrary
                    size="1.3rem"
                    className=""
@@ -63,7 +63,7 @@ const FixedSidebar = () => {
 
            
 
-            <div className="flex flex-col py-4 items-center justify-center hover:bg-zinc-800 rounded-lg cursor-pointer">
+            <div className={`flex flex-col px-3 py-4 items-center justify-center rounded-lg cursor-pointer ${theme?"hover:bg-gray-300":"hover:bg-zinc-800"} `}>
             <MdOutlineWatchLater
                    size="1.3rem"
                    className=""
