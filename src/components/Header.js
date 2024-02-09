@@ -221,15 +221,15 @@ const Header = () => {
 
            {/*    voice search functionality */}
 
-
-         <div  onClick={handleListen} className='p-2 mx-1 ml-4 cursor-pointer hover:bg-zinc-700 rounded-full'>
+                                                
+         <div  onClick={handleListen} className={`p-2 mx-1 ml-4 rounded-full cursor-pointer ${theme ?  'text-black hover:bg-gray-300' : 'text-white hover:bg-zinc-700' }`}>
                
              {
                 listening?
                 <img className='w-[1.88rem]' src={MikeListening} alt="" />
                 : <MdKeyboardVoice
                     size="1.5rem" 
-                    className={`transition-all duration-500 text-white`}
+                    className={`transition-all duration-500  `}
                     title='Search With Your Voice'
                   />
              }

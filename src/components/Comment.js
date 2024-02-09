@@ -26,12 +26,8 @@ const Comment = ({ data }) => {
             <div className={`${theme ? 'text-black' : 'text-white'}`}>
 
 
-                <h1 className='font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
+                <h1 className='text-[15px] font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
                 <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 60)}</h1>
-
-
-
-
 
                 <div className={`flex gap-4 py-2`}>
                     <BiLike
@@ -44,7 +40,7 @@ const Comment = ({ data }) => {
                         className='cursor-pointer'
                     />
 
-                    <h1 className='text-[12px] font-semibold'>Reply</h1>
+                    <h1 className='text-[12px]'>Reply</h1>
 
                 </div>
             </div>

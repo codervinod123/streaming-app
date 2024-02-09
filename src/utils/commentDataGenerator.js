@@ -1,6 +1,15 @@
 // Lists of common Indian first names and last names
 const indianFirstNames = [
-    "Aarav", "Aria", "Arya", "Diya", "Ishaan", "Krishna", "Mira", "Neha", "Raj", "Sofia",
+    "Aarav", 
+    "Aria", 
+    "Arya", 
+    "Diya",
+    "Ishaan",
+    "Krishna",
+    "Mira",
+    "Neha",
+    "Raj",
+    "Sofia",
     "Aarav",
   "Aishwarya",
   "Akshay",

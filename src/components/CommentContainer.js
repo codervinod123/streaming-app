@@ -164,12 +164,11 @@ const CommentContainer = ({vedioId}) => {
  
   const nextPageToken=async()=>{
      getComments();
-     console.log("click")
   }
 
   return (
     <div className='w-[40rem]'>
-        <h1 className='font-bold'>Comments :</h1>
+        <h1 className='font-bold text-[25px] pb-2'>Comments :</h1>
         <CommentList comments={comments}/>
         <div className='w-full flex justify-center'>
            <button onClick={nextPageToken} className='bg-gray-600 font-bold px-6 py-1 rounded'>Load More</button>

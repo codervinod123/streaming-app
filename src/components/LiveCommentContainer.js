@@ -5,6 +5,7 @@ import { addComments } from '../utils/liveCommentSlice'
 import { useSelector } from 'react-redux'
 import {generateRandomIndianName} from "../utils/commentDataGenerator";
 import {generateRandomComment} from "../utils/commentDataGenerator";
+import Suggestions from './Suggestions'
 
 const LiveCommentContainer = () => {
     const dispatch=useDispatch();
@@ -38,7 +39,7 @@ const LiveCommentContainer = () => {
    
   return (
     <div className=''>
-    <div className='flex flex-col-reverse mb-1 mt-4 mx-4 h-[320px] border border-white rounded text-white overflow-y-auto'>
+    <div className='flex flex-col-reverse mb-1 mt-4 mx-4 h-[320px]  rounded text-white overflow-y-auto'>
        {
           comments.map((data,index)=>{
             return(
@@ -50,16 +51,20 @@ const LiveCommentContainer = () => {
        }
      </div>
 
-       <div className='mx-4 py-1 w-[95%] rounded bg-slate-300 flex items-center'>
+       <div className='mx-6 py-1 w-[90%] px-4 rounded-full bg-zinc-800 flex items-center'>
          <form onSubmit={(e)=>handleSubmit(e)}>
            <input 
               type="text"
               placeholder='Comment'
-              className='bg-slate-300 w-[80%] rounded px-6 py-1 outline-none'
+              className='bg-zinc-800 w-[100%]  py-1 outline-none text-white placeholder:text-white'
               value={commentText}
               onChange={(e)=>setCommentText(e.target.value)}
               />
            </form>
+       </div>
+
+       <div className='mx-6 my-4 border border-white'>
+          <Suggestions/>
        </div>
 
     </div>
