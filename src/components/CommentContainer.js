@@ -1,6 +1,10 @@
 import React, { useState,useEffect } from 'react';
 import Comment from './Comment';
 import {commentsURL,API_KEY} from "../config/constant"
+import { useSelector } from 'react-redux';
+
+
+// example for n level comment nesting
 
 // const commentData=[
 //   {
@@ -112,11 +116,11 @@ import {commentsURL,API_KEY} from "../config/constant"
 
 // ]
 
-
-
-
-
 const CommentList=({comments})=>{
+
+  
+  
+ 
 
   return(
     <>
@@ -143,6 +147,7 @@ const CommentContainer = ({vedioId}) => {
 
   const [comments,setComments]=useState([]);
   const [token,setToken]=useState("");
+  const [theme,setTheme]=useState(false);
 
   useEffect(()=>{
     getComments();
@@ -166,12 +171,19 @@ const CommentContainer = ({vedioId}) => {
      getComments();
   }
 
+
+  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
+  useEffect(()=>{
+    setTheme(themeMode);
+  },[themeMode]);
+
+
   return (
     <div className='w-[40rem]'>
         <h1 className='font-bold text-[25px] pb-2'>Comments :</h1>
         <CommentList comments={comments}/>
         <div className='w-full flex justify-center'>
-           <button onClick={nextPageToken} className='bg-gray-600 font-bold px-6 py-1 rounded'>Load More</button>
+           <button onClick={nextPageToken} className={` font-bold px-6 py-1 rounded ${theme?"bg-gray-400 text-black":"bg-gray-800"}`}>Load More</button>
         </div>
     </div>
   )

@@ -10,7 +10,7 @@ import { vedioSummary } from '../config/constant';
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
 import LiveCommentContainer from './LiveCommentContainer';
-import Suggestions from './Suggestions';
+
 
 
 const Watchpage = () => {
@@ -64,8 +64,8 @@ const Watchpage = () => {
  
    
   return !vedDetails || !summary ? <WatchPageShimmer/> : (
-    <div className={`flex relative w-screen transition-all duration-500  bg-zinc-900 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-black' }`}>
-    <div  className='relative ml-[4rem] py-4 pl-4 flex flex-col bg-zinc-900'>
+    <div className={`flex relative w-screen transition-all duration-500   ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-white' }`}>
+    <div  className={`relative ml-[4rem] py-4 pl-4 flex flex-col transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-white'} `}>
            
            <div>
             <iframe 
@@ -94,11 +94,11 @@ const Watchpage = () => {
             <p className={`text-[13px] ${theme ? "text-gray-800" : "text-gray-300"}`}>{vedDetails.statistics.subscriberCount / 1000000}M subscribers</p>
           </div>
           <div className='mx-8'>
-            <button className='bg-gray-200 px-4 py-[.4rem] rounded-full font-semibold text-[14px]'>Subscribe</button>
+            <button className={`px-4 py-[.4rem] rounded-full font-semibold text-[14px] transition-all duration-500 ${theme?"text-white bg-zinc-900 hover:bg-zinc-800 ":"text-black bg-gray-200 hover:bg-gray-400"}`}>Subscribe</button>
           </div>
 
           <div>
-            <div className='bg-zinc-800 cursor-pointer text-white px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
+            <div className={`cursor-pointer  px-4 py-[.4rem] rounded-full font-semibold flex gap-4  transition-all duration-500 ${theme?"bg-gray-200 hover:bg-gray-300":"bg-zinc-800 hover:bg-zinc-700"}`}>
               <BiLike
                 size={"1.5rem"}
               //  className='border-r'
@@ -111,16 +111,16 @@ const Watchpage = () => {
           </div>
 
              <div className='mx-4'> 
-              <div className='bg-zinc-800 cursor-pointer  px-4 py-[.4rem] rounded-full font-semibold flex gap-4'>
+              <div className={`cursor-pointer  px-4 py-[.4rem] rounded-full font-semibold flex gap-4 ${theme?"bg-gray-200 hover:bg-gray-300":"bg-zinc-800 hover:bg-zinc-700"}`}>
                    <PiShareFatLight  size={"1.5rem"}/>
               </div>
              </div>
            
-             <div className='bg-zinc-800 rounded-full h-[2.4rem] w-[2.4rem] hover:bg-zinc-400 font-bold flex text-white justify-center'>...</div>
+             <div className={`rounded-full h-[2.4rem] w-[2.4rem] hover:bg-zinc-400 font-bold flex  justify-center  ${theme?"bg-gray-200 text-black hover:bg-gray-300":"bg-zinc-800 text-white hover:bg-zinc-700"}`}>...</div>
           </div>
 
-          <div className='w-[40rem] bg-zinc-800 rounded my-3 p-2'>
-              <p className='text-white'>
+          <div className={`w-[40rem] rounded my-3 p-2  ${theme?"bg-gray-200 text-black ":"bg-zinc-800 text-white "}`}>
+              <p className=''>
                  {summary.snippet.title}  
                    <button className='font-bold px-1' onClick={()=>setExpand(!expand)}> {expand?"...More ":"...Less "}</button> 
               </p>
