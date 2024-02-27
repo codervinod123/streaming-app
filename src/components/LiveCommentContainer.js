@@ -6,15 +6,14 @@ import { useSelector } from 'react-redux'
 import {generateRandomIndianName} from "../utils/commentDataGenerator";
 import {generateRandomComment} from "../utils/commentDataGenerator";
 import Suggestions from './Suggestions'
+import useTheme from '../utils/useTheme'
 
 const LiveCommentContainer = () => {
     const dispatch=useDispatch();
     
     const comments=useSelector((store)=>store.liveCommentSlice.liveComments)
     const [commentText,setCommentText]=useState("");
-    const [theme,setTheme]=useState(false);
   
-
     useEffect(()=>{
         const t=setInterval(()=>{
            dispatch(addComments({
@@ -37,11 +36,8 @@ const LiveCommentContainer = () => {
           setCommentText("");
     }
     
-    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-    useEffect(()=>{
-      setTheme(themeMode);
-    },[themeMode]);
-
+    const theme=useTheme();
+  
   
 
    

@@ -28,19 +28,13 @@ import { TbMoodKid } from "react-icons/tb";
 import { ImDisplay } from "react-icons/im";
 import {useSelector} from "react-redux"
 import { Link } from "react-router-dom";
+import useTheme from "../utils/useTheme";
 
 
 const Sidebar = () => {
-
-   const [theme,setTheme]=useState(false);
  
     const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
-    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-  
-    useEffect(()=>{
-      setTheme(themeMode);
-    },[themeMode])
-   
+    const theme=useTheme();
 
     if(!isSidebarOpen) return null;
    

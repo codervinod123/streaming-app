@@ -1,16 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import {BiSolidUserCircle} from "react-icons/bi";
-import { useSelector } from 'react-redux';
+import useTheme from '../utils/useTheme';
 
 
 const LiveComment = ({name,message}) => {
 
-  const [theme,setTheme]=useState(false);
-
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-  useEffect(()=>{
-    setTheme(themeMode);
-  },[themeMode]);
+  const theme=useTheme();
 
 
   return (

@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import { BiLike, BiDislike } from "react-icons/bi";
-import { useSelector } from 'react-redux';
+import useTheme from '../utils/useTheme';
 
 const Comment = ({ data }) => {
 
-
-
-    const [theme, setTheme] = useState(false);
-    const themeMode = useSelector((store) => store.themeSlice.isLightTheme);
-
-    useEffect(() => {
-        setTheme(themeMode);
-    }, [themeMode])
-
+    const theme=useTheme();
 
     return (
         <div className='flex gap-2 shadow-sm'>
@@ -21,10 +12,7 @@ const Comment = ({ data }) => {
                 <img className='rounded-full' src={data.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="user" />
             </div>
 
-
-
             <div className={`${theme ? 'text-black' : 'text-white'}`}>
-
 
                 <h1 className='text-[15px] font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
                 <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 60)}</h1>

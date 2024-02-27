@@ -19,6 +19,7 @@ import {toggleTheme} from '../utils/themeSlice';
 import Voice from './Voice';
 import { setSearch } from '../utils/videoSlice';
 import { addVideo } from '../utils/videoSlice';
+import useTheme from '../utils/useTheme';
 
 const Header = () => {
 
@@ -27,7 +28,6 @@ const Header = () => {
     const [searchText,setSearchText]=useState("");
     const [suggestions,setSuggestions]=useState([]);
     const [showSuggestions,setShowSuggestions]=useState(false);
-    const [theme,setTheme]=useState(false);
 
     const [listening, setListening] = useState(false);
   
@@ -79,17 +79,9 @@ const Header = () => {
       dispatch(toggleTheme());
   }
 
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-
-  useEffect(()=>{
-   setTheme(themeMode);
-  },[themeMode])
-
 
 // voice search functionality
-  
-  
-
+  const theme=useTheme();
    
   const speechRecognition=new (window.SpeechRecognition || window.webkitSpeechRecognition) ();
   speechRecognition.lang='en-US';
@@ -106,7 +98,7 @@ const Header = () => {
      }
      
   }
-
+  
   speechRecognition.onend=()=>{
     setListening(false);
  }

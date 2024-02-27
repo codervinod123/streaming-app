@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { YOUTUBE_API_URL } from '../config/constant';
+import React from 'react';
 import ButtonList from './ButtonList';
 import VedioContainer from './VedioContainer';
 import { useSelector } from 'react-redux';
@@ -9,22 +8,16 @@ import  "./global.css";
 
 
 import FixedSidebar from './FixedSidebar'
+import useTheme from '../utils/useTheme';
 
 
 
 const Maincontainer = () => {
-  const [theme, setTheme] = useState(false);
-  const themeMode = useSelector((store) => store.themeSlice.isLightTheme);
-
-
-  useEffect(() => {
-    setTheme(themeMode);
-  }, [themeMode]);
-
+  
+  const theme=useTheme();
 
   const fixedSidebarStatus=useSelector((store)=>store.sidebarSlice.isFixedbarOpen);
   
-
   return (
     <div className="relative flex w-full mx-auto">
       {/* <Sidebar /> */}
@@ -33,11 +26,11 @@ const Maincontainer = () => {
           {fixedSidebarStatus ? <FixedSidebar /> : <Sidebar/>}
       </div>
 
-      <div className={`transition-all flex justify-center relative sm:ml-[5%] lg:ml-[5%] md:ml-[5%] w-[100%] sm:w-[95%] md:w-[95%]  lg:w-[95%]  duration-500 ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
+      <div className={`transition-all flex flex-col justify-center relative sm:ml-[5%] lg:ml-[5%] md:ml-[5%] w-[100%] sm:w-[95%] md:w-[95%]  lg:w-[95%]  duration-500 ${theme ? 'bg-white' : 'bg-zinc-900'}`}>
         
-        {/* <div className='buttonlist-container  overflow-auto max-h-screen max-w-screen-xl'>
+        <div className='buttonlist-container overflow-auto max-h-screen max-w-screen-xl'>
           <ButtonList />
-        </div> */}
+        </div>
 
         <VedioContainer />  
       </div>
