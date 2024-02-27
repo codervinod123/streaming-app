@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import {
   MdHomeFilled,
   MdOutlineSubscriptions,
@@ -9,22 +9,13 @@ import {
 import {useSelector} from "react-redux"
 import { Link } from "react-router-dom";
 import "./global.css"
+import useTheme from "../utils/useTheme";
 
 
 const FixedSidebar = () => {
-
-
-
-
-  const [theme,setTheme]=useState(false);
  
     const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
-    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-  
-    useEffect(()=>{
-      setTheme(themeMode);
-    },[themeMode])
-   
+    const theme=useTheme();
 
     if(isSidebarOpen) return null;
 

@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { toggleTheme } from '../utils/themeSlice';
+import React from 'react'
+import useTheme from '../utils/useTheme';
 
 const Button = ({name}) => {
-
-   const [theme,setTheme]=useState(false);
-   const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-   useEffect(()=>{
-    setTheme(themeMode);
-   },[themeMode])
-   
+  const theme=useTheme();
 
   return (
     <div>

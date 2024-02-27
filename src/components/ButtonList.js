@@ -1,25 +1,13 @@
 import React from 'react'
 import Button from './Button'
+import category from '../config/category'
 
-const buttons=[
-  "All",
-  "React",
-  "Songs",
-  "Gaming",
-  "Entertain",
-  "Treaking",
-  "Movies",
-  "Racing",
-  "Bikes",
-  "Engineering",
-  "Riding"
-]
 
 const ButtonList = () => {
   return (
     <div className='my-2 mx-6 flex gap-4 text-white'>
        {
-        buttons.map((data)=>{
+        category.map((data)=>{
            return(
              <Button key={data} name={data}/>
            )

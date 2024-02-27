@@ -4,21 +4,16 @@ import Vediocard from './Vediocard';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import SearchResultCard from './SearchResultCard';
+import useTheme from '../utils/useTheme';
 
 const VedioContainer = () => {
    
 
     const [vedios,setVedios]=useState([]);
-    const [theme,setTheme]=useState(false);
     const [nextPageToken,setNextPageToken]=useState("");
 
-    const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-    
-    useEffect(()=>{
-      setTheme(themeMode);
-    },[themeMode])
+    const theme=useTheme();
  
     
     const getVedios=async(nextPageToken="")=>{

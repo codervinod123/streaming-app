@@ -10,6 +10,7 @@ import { vedioSummary } from '../config/constant';
 import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
 import LiveCommentContainer from './LiveCommentContainer';
+import useTheme from '../utils/useTheme';
 
 
 
@@ -21,13 +22,8 @@ const Watchpage = () => {
     const {channelId}=useParams()
 
     const [vedDetails,setVedDetails]=useState(null);
-    const [theme,setTheme]=useState(false);
     const [summary,setSummary]=useState(null);
     const [expand,setExpand]=useState(false);
-   
-    
-   
-
    
     useEffect(()=>{
        dispatch(closeSidebar());
@@ -55,12 +51,7 @@ const Watchpage = () => {
 
     }
 
-  
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-
-  useEffect(()=>{
-    setTheme(themeMode);
-  },[themeMode])
+   const theme=useTheme();
  
    
   return !vedDetails || !summary ? <WatchPageShimmer/> : (

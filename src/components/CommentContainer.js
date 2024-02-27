@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import Comment from './Comment';
 import {commentsURL,API_KEY} from "../config/constant"
-import { useSelector } from 'react-redux';
+import useTheme from '../utils/useTheme';
 
 
 // example for n level comment nesting
@@ -147,7 +147,6 @@ const CommentContainer = ({vedioId}) => {
 
   const [comments,setComments]=useState([]);
   const [token,setToken]=useState("");
-  const [theme,setTheme]=useState(false);
 
   useEffect(()=>{
     getComments();
@@ -171,12 +170,7 @@ const CommentContainer = ({vedioId}) => {
      getComments();
   }
 
-
-  const themeMode=useSelector((store)=>store.themeSlice.isLightTheme);
-  useEffect(()=>{
-    setTheme(themeMode);
-  },[themeMode]);
-
+ const theme=useTheme();
 
   return (
     <div className='w-[40rem]'>
