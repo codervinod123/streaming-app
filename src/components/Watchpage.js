@@ -27,7 +27,7 @@ const Watchpage = () => {
     const [expand,setExpand]=useState(false);
    
     useEffect(()=>{
-      //  dispatch(closeSidebar());
+       dispatch(closeSidebar());
        dispatch(closeFixedBar());
     },[])
 
