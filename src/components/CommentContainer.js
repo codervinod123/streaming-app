@@ -118,13 +118,8 @@ import useTheme from '../utils/useTheme';
 
 const CommentList=({comments})=>{
 
-  
-  
- 
-
   return(
     <>
-
       {
         comments.map((data,index)=>{
           return(

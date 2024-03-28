@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import WatchPageShimmer from './WatchPageShimmer';
 import LiveCommentContainer from './LiveCommentContainer';
 import useTheme from '../utils/useTheme';
+import Sidebar from './Sidebar';
 
 
 
@@ -26,7 +27,7 @@ const Watchpage = () => {
     const [expand,setExpand]=useState(false);
    
     useEffect(()=>{
-       dispatch(closeSidebar());
+      //  dispatch(closeSidebar());
        dispatch(closeFixedBar());
     },[])
 
@@ -55,6 +56,10 @@ const Watchpage = () => {
  
    
   return !vedDetails || !summary ? <WatchPageShimmer/> : (
+    <>
+    <div className='fixed top-[3.8rem] z-10 bg-zinc-900 transition-all duration-500'>
+      <Sidebar/>
+    </div>
     <div className={`flex relative w-screen transition-all duration-500   ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-white' }`}>
     <div  className={`relative ml-[4rem] py-4 pl-4 flex flex-col transition-all duration-500 ${theme ?  'bg-white text-black' : 'bg-zinc-900 text-white'} `}>
            
@@ -130,6 +135,8 @@ const Watchpage = () => {
       </div>
    
     </div>
+    </>
+
   )
 }
 
