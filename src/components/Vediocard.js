@@ -18,7 +18,7 @@ const Vediocard = ({info,theme}) => {
         </div>
 
         <div>
-           <p style={{ textTransform: 'lowercase' }} className='font-semibold'>{info.snippet.localized.title.slice(0,36)}...</p>
+           <p style={{ textTransform: 'lowercase' }} className=''>{info.snippet.localized.title.slice(0,36)}...</p>
            <p className="">{info.snippet.channelTitle}</p>
            <p className={` ${theme? 'text-gray-700' : 'text-gray-400'}`}>{info.statistics.viewCount/1000000} M Views</p>
         </div>

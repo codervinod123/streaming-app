@@ -86,11 +86,11 @@ const VedioContainer = () => {
   )
 
   
-  else return vedios.length===0 ? <Shimmer/> : (
+  else return vedios.length!==0 ? <Shimmer/> : (
     <div className=''>
 
      
-      <div className={`grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:m-4 sm:m-4 md:m-4   gap-6 my-4 transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
+      <div className={`grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:m-4 sm:m-4 md:m-4 gap-6 my-4 transition-all duration-500 ${theme ?'bg-white' : 'bg-zinc-900'}`}>
        {
            vedios.map((data)=>{
              return(

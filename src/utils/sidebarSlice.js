@@ -12,11 +12,11 @@ const sidebarSlice=createSlice({
             state.isFixedbarOpen=!state.isFixedbarOpen;
         },
         closeSidebar:(state)=>{
-            state.isMenuOpen=false;
+            state.isMenuOpen=!state.isMenuOpen;
         },
         closeFixedBar:(state)=>{
-            state.isFixedbarOpen=false;
-            state.isMenuOpen=false;
+            state.isFixedbarOpen=!state.isFixedbarOpen;
+            state.isMenuOpen=!state.isMenuOpen;
         }
 
     }
