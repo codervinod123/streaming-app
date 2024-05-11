@@ -15,8 +15,8 @@ const sidebarSlice=createSlice({
             state.isMenuOpen=false;
         },
         closeFixedBar:(state)=>{
-            state.isFixedbarOpen=!state.isFixedbarOpen;
-            state.isMenuOpen=!state.isMenuOpen;
+            state.isFixedbarOpen=false;
+            state.isMenuOpen=false;
         }
 
     }

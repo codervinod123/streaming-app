@@ -34,22 +34,6 @@ const Header = () => {
 
     const storedCache=useSelector((store)=>store.searchSlice);
 
-    useEffect(()=>{
-
-     const time=setTimeout(()=> {
-      if(storedCache[searchText]){
-         setSuggestions(storedCache[searchText]);
-      }else{
-         getSearchResult()
-      }
-
-     },300);
-
-     return ()=>{
-         clearTimeout(time);
-      };
-
-    },[searchText]);
 
     const getSearchResult=async()=>{
                     
@@ -63,6 +47,23 @@ const Header = () => {
      }
 
    
+     useEffect(()=>{
+
+      const time=setTimeout(()=> {
+       if(storedCache[searchText]){
+          setSuggestions(storedCache[searchText]);
+       }else{
+          getSearchResult()
+       }
+ 
+      },300);
+ 
+      return ()=>{
+          clearTimeout(time);
+       };
+ 
+     },[searchText]);
+
 
    const handleToggleClick=()=>{
        dispatch(toggleSIdebarMenu());
