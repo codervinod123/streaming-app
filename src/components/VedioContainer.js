@@ -86,7 +86,7 @@ const VedioContainer = () => {
   )
 
   
-  else return vedios.length!==0 ? <Shimmer/> : (
+  else return vedios.length===0 ? <Shimmer/> : (
     <div className=''>
 
      
