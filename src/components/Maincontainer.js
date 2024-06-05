@@ -16,7 +16,7 @@ const Maincontainer = () => {
   
   const theme=useTheme();
 
-  const fixedSidebarStatus=useSelector((store)=>store.sidebarSlice.isFixedbarOpen);
+  const fixedSidebarStatus=useSelector((store)=>store?.sidebarSlice?.isFixedbarOpen);
   
   return (
     <div className="relative flex w-full mx-auto">

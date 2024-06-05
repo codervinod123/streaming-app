@@ -126,9 +126,9 @@ const Header = () => {
 
   const searchResult=async()=>{
         const data=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${searchText}&key=AIzaSyB8bmu-ptu-aF0mldG3a3JWT5-pccwMS4E`);
-        const json=await data.json();
+        const json=await data?.json();
       //   console.log(json.items);
-        dispatch(addVideo(json.items));
+        dispatch(addVideo(json?.items));
         
   } 
 

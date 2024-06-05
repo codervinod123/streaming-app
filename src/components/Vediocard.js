@@ -8,7 +8,7 @@ const Vediocard = ({info,theme}) => {
     <div className=''>
        
        <div className='rounded'>
-         <img className='rounded lg:w-[700px]' src={info.snippet.thumbnails.medium.url} alt="thumbnail" />
+         <img className='rounded lg:w-[700px]' src={info?.snippet?.thumbnails?.medium?.url} alt="thumbnail" />
        </div>
 
       <div className={`flex py-3 gap-3 ${theme ? 'text-black' : 'text-white' }`}>
@@ -18,9 +18,9 @@ const Vediocard = ({info,theme}) => {
         </div>
 
         <div>
-           <p style={{ textTransform: 'lowercase' }} className=''>{info.snippet.localized.title.slice(0,36)}...</p>
-           <p className="">{info.snippet.channelTitle}</p>
-           <p className={` ${theme? 'text-gray-700' : 'text-gray-400'}`}>{info.statistics.viewCount/1000000} M Views</p>
+           <p style={{ textTransform: 'lowercase' }} className=''>{info?.snippet?.localized?.title?.slice(0,36)}...</p>
+           <p className="">{info?.snippet?.channelTitle}</p>
+           <p className={` ${theme? 'text-gray-700' : 'text-gray-400'}`}>{info?.statistics?.viewCount/1000000} M Views</p>
         </div>
 
        </div>

@@ -11,7 +11,7 @@ import useTheme from '../utils/useTheme'
 const LiveCommentContainer = () => {
     const dispatch=useDispatch();
     
-    const comments=useSelector((store)=>store.liveCommentSlice.liveComments)
+    const comments=useSelector((store)=>store?.liveCommentSlice?.liveComments)
     const [commentText,setCommentText]=useState("");
   
     useEffect(()=>{
@@ -47,10 +47,10 @@ const LiveCommentContainer = () => {
     <div className=''>
     <div className={`flex flex-col-reverse mb-1 mt-4 mx-4 h-[320px]  rounded overflow-y-auto transition-all duration-500 ${theme?"bg-white text-black":"bg-zinc-900 text-white"}`}>
        {
-          comments.map((data,index)=>{
+          comments?.map((data,index)=>{
             return(
                 <div key={index}>
-                  <LiveComment name={data.name} message={data.message+"👌"}/>
+                  <LiveComment name={data?.name} message={data?.message+"👌"}/>
                 </div>
             )
           })

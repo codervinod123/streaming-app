@@ -9,13 +9,13 @@ const Comment = ({ data }) => {
         <div className='flex gap-2 shadow-sm'>
 
             <div className='mx-2 w-[40px] h-[40px]'>
-                <img className='rounded-full' src={data.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="user" />
+                <img className='rounded-full' src={data?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl} alt="user" />
             </div>
 
             <div className={`${theme ? 'text-black' : 'text-white'}`}>
 
-                <h1 className='text-[15px] font-semibold'>{data.snippet.topLevelComment.snippet.authorDisplayName}</h1>
-                <h1>{data.snippet.topLevelComment.snippet.textDisplay.slice(0, 60)}</h1>
+                <h1 className='text-[15px] font-semibold'>{data?.snippet?.topLevelComment?.snippet?.authorDisplayName}</h1>
+                <h1>{data?.snippet?.topLevelComment?.snippet?.textDisplay?.slice(0, 60)}</h1>
 
                 <div className={`flex gap-4 py-2`}>
                     <BiLike

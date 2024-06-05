@@ -47,8 +47,8 @@ const Watchpage = () => {
 
     const getVedioChannelDetails=async()=>{
         const data=await fetch(channelDetailURL+channelId+"&key="+API_KEY);
-        const json=await data.json();
-        setVedDetails(json.items[0]);
+        const json=await data?.json();
+        setVedDetails(json?.items[0]);
 
     }
 
@@ -68,7 +68,7 @@ const Watchpage = () => {
                className='rounded-lg'
                width="640" 
                height="360" 
-               src={"https://www.youtube.com/embed/"+queriedId.get("v")+"?autoplay=1"}
+               src={"https://www.youtube.com/embed/"+queriedId?.get("v")+"?autoplay=1"}
                title="YouTube video player" 
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
              >
@@ -84,10 +84,10 @@ const Watchpage = () => {
          {/* EfixesNeed */}
 
         <div className='flex w-[40rem] items-center'>
-          <div className='mx-2 h-[2.6rem] w-[2.6rem]'><img className='rounded-full' src={vedDetails.snippet.thumbnails.medium.url} alt="channelLogo" /></div>
+          <div className='mx-2 h-[2.6rem] w-[2.6rem]'><img className='rounded-full' src={vedDetails?.snippet?.thumbnails?.medium?.url} alt="channelLogo" /></div>
           <div className='leading-[18px]'>
-            <p className={`font-semibold ${theme ? "text-black" : "text-white"}`}>{vedDetails.snippet.title.slice(0,20)}...</p>
-            <p className={`text-[13px] ${theme ? "text-gray-800" : "text-gray-300"}`}>{vedDetails.statistics.subscriberCount / 1000000}M subscribers</p>
+            <p className={`font-semibold ${theme ? "text-black" : "text-white"}`}>{vedDetails?.snippet?.title?.slice(0,20)}...</p>
+            <p className={`text-[13px] ${theme ? "text-gray-800" : "text-gray-300"}`}>{vedDetails?.statistics?.subscriberCount / 1000000}M subscribers</p>
           </div>
           <div className='mx-8'>
             <button className={`px-4 py-[.4rem] rounded-full font-semibold text-[14px] transition-all duration-500 ${theme?"text-white bg-zinc-900 hover:bg-zinc-800 ":"text-black bg-gray-200 hover:bg-gray-400"}`}>Subscribe</button>
@@ -117,7 +117,7 @@ const Watchpage = () => {
 
           <div className={`w-[40rem] rounded my-3 p-2  ${theme?"bg-gray-200 text-black ":"bg-zinc-800 text-white "}`}>
               <p className=''>
-                 {summary.snippet.title}  
+                 {summary?.snippet?.title}  
                    <button className='font-bold px-1' onClick={()=>setExpand(!expand)}> {expand?"...More ":"...Less "}</button> 
               </p>
           </div>

@@ -14,7 +14,7 @@ import useTheme from "../utils/useTheme";
 
 const FixedSidebar = () => {
  
-    const isSidebarOpen=useSelector((store)=>store.sidebarSlice.isMenuOpen);
+    const isSidebarOpen=useSelector((store)=>store?.sidebarSlice?.isMenuOpen);
     const theme=useTheme();
 
     if(isSidebarOpen) return null;

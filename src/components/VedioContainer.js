@@ -28,7 +28,7 @@ const VedioContainer = () => {
       if(nextPageToken){
         setVedios((prev)=>[...prev,...json.items]); 
       }else{
-        setVedios(json.items);
+        setVedios(json?.items);
       }
    }
    
@@ -42,9 +42,9 @@ const VedioContainer = () => {
 
   //  infinite scroll
   const handleScroll=()=>{
-       const total=document.documentElement.scrollHeight;
-       const innerHeight=window.innerHeight;
-       const scrolled=document.documentElement.scrollTop;
+       const total=document?.documentElement?.scrollHeight;
+       const innerHeight=window?.innerHeight;
+       const scrolled=document?.documentElement?.scrollTop;
 
        if(innerHeight+scrolled+1>total){
       
@@ -64,8 +64,8 @@ const VedioContainer = () => {
 
   //  searched video implementation
 
-  const isSearchOn=useSelector((store)=>store.searchVideoSlice.isSearchOn);
-  const val=useSelector((store)=>store.searchVideoSlice.videos);
+  const isSearchOn=useSelector((store)=>store?.searchVideoSlice?.isSearchOn);
+  const val=useSelector((store)=>store?.searchVideoSlice?.videos);
   
 
 
@@ -75,7 +75,7 @@ const VedioContainer = () => {
     {
         val.map((data,index)=>{
           return(
-            <Link key={index} to={"watch/"+data.snippet.channelId+"?v="+data.id.videoId}>
+            <Link key={index} to={"watch/"+data?.snippet?.channelId+"?v="+data?.id?.videoId}>
               <SearchResultCard  info={data} theme={theme}/>
             </Link>
           )
@@ -94,7 +94,7 @@ const VedioContainer = () => {
        {
            vedios.map((data)=>{
              return(
-               <Link key={data.id} to={"watch/"+data.snippet.channelId+"?v="+data.id}>
+               <Link key={data?.id} to={"watch/"+data?.snippet?.channelId+"?v="+data?.id}>
                  <Vediocard  info={data} theme={theme}/>
                </Link>
              )
