@@ -1,9 +1,5 @@
-#Project Name-
+# Project Name-
 
-Video Streaming Application
+# Video Streaming Application
 
-Tech Stacks
-Frontend
-React + JavaScript
-CSS + Tailwind CSS
-axios, react-icons, react-toast , Create React App
+- Tech Stacks Frontend React + JavaScript CSS + Tailwind CSS axios, react-icons, react-toast , Create React App
