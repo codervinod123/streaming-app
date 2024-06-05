@@ -94,7 +94,7 @@ const Header = () => {
   speechRecognition.onresult=(e)=>{
      const transcript = e.results[0][0].transcript;
      setSearchText(transcript);
-     if(transcript.length>0){
+     if(transcript?.length>0){
       setShowSuggestions(true);
      }
      
@@ -181,7 +181,7 @@ const Header = () => {
                   </form>
 
                      
-              {suggestions.length>0 && showSuggestions && (<div className='bg-zinc-800 p-4 absolute top-12 left-2 w-[100%] rounded-lg'>
+              {suggestions?.length>0 && showSuggestions && (<div className='bg-zinc-800 p-4 absolute top-12 left-2 w-[100%] rounded-lg'>
                  <ul>
                   {
                      suggestions.map((data)=>{
